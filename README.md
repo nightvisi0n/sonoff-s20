@@ -30,7 +30,7 @@ Have a look at [src/config.h](src/config.h) and adapt it to your needs.
 First change the OTA password in [platformio.ini](platformio.ini) if you modified the default one in [src/config.h](src/config.h).
 
 ```shell
-~/git/sonoff-s20/ › pio run -t upload --upload-port=<esp8266 ip address>
+~/git/sonoff-s20/ › pio run -t upload -e ota --upload-port=<esp8266 ip address>
 ```
 
 ## Integration into [home-assistant](https://home-assistant.io/) ##
