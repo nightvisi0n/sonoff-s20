@@ -1,15 +1,23 @@
 language: python
 python:
-    - "2.7"
-
-# Cache PlatformIO packages using Travis CI container-based infrastructure
+  - '2.7'
 sudo: false
 cache:
-    directories:
-        - "~/.platformio"
+  directories:
+    - "~/.platformio"
 
 install:
-    - pip install -U platformio
+- pip install -U platformio
 
 script:
-    - pio ci --project-conf=platformio.ini src/
+- pio ci --project-conf=platformio.ini src/
+
+deploy:
+  provider: releases
+  api_key:
+    secure: cbbgalc9FMreQNVyGbxspaJgSwBw93HUrXQd03i85U3X+FLQtdwnNCbVdhjAi1vdCUHmS1jeWFXe3tTk2RGyiJGFUlxY3No4tgfxk7rXJv439YszIPUunoRlZGqQFJC4ADYUZDcyP7tus5zA1bKku+oc3K2Z2ZX2nF8GT9RSc0zvYryEn6ioluD/HpNzIRF5OUEMyvn9vNreVha6ksmAI9/T9GLMukkG6l3vhMI+OYodBECiBcgG9FTqVdMexWddnKkUe/Gfd1NWWLTzdoQiYvQ4eckAKWjzDGNP7hvbw37pfKob4cQV2/Dm6p0tsQnE9B+c+giZ/KsaN/nu0nH2cm3N+rKfk2eGbnWqQbP7hTp9UrjS2JgQG8462pxbbL27ojqupmd78sSN1GggWBcrw3N6x6v645NncAdU5eliN5kqk4w2jRBrOqCu+AEl94wJncypmIvWup4z/Tjj+EuZg2xvjZ7A7aCA6ymdeFJ1zvP1qTWxCB36xr+iJZTuuENbbPxjEzY3araHifkNaKYhFgpfprXxhkgKVNV/wjjBarLaPUKOdi+f4qoWIXQYjcHDh+9B7TaYE3RskDJinyXDVvmillzG+zsCyhTEZvClVzEsh2fB5RcS7Gtugt67EyJMLqTr4peHYcC6b+t8TjsngwJoVxgmRBxsaHMOs80ZVsI=
+  file: ".pioenvs/usb/firmware.bin"
+  skip_cleanup: true
+  on:
+    repo: nightvisi0n/sonoff-s20
+    tags: true
