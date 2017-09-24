@@ -31,6 +31,30 @@ First change the OTA password in [platformio.ini](platformio.ini) if you modifie
 ~/git/sonoff-s20/ › pio run -t upload --upload-port=<esp8266 ip address>
 ```
 
+## Integration into [home-assistant](https://home-assistant.io/) ##
+
+### As a [light component](https://home-assistant.io/components/light.mqtt/) ###
+
+```yaml
+light:
+  - platform: mqtt
+    name: "Kitchen Light"
+    state_topic: "sonoff/<ESP8266 chip id>/state"
+    command_topic: "sonoff/<ESP8266 chip id>/command"
+    retain: true
+```
+
+### As a [switch component](https://home-assistant.io/components/switch.mqtt/) ###
+
+```yaml
+switch:
+  - platform: mqtt
+    name: "Coffee Machine"
+    state_topic: "sonoff/<ESP8266 chip id>/state"
+    command_topic: "sonoff/<ESP8266 chip id>/command"
+    retain: true
+```
+
 ## License ##
 
 Copyright (C) 2017 nightvisi0n
