@@ -71,15 +71,6 @@ char mqtt_topic_state[
     + sizeof("/state")-1
     + 1 // terminating null byte
 ];
-// format:
-// <MQTT_PREFIX>/<ESP8266_CHIPID>/+
-char mqtt_topic_device[
-    sizeof(MQTT_PREFIX)-1
-    + sizeof("/")-1
-    + ESP8266_CHIPID_SIZE
-    + sizeof("/+")
-    + 1 // terminating null byte
-];
 
 void setup() {
     state = STATE_OFF;
@@ -93,11 +84,6 @@ void setup() {
         mqtt_topic_state,
         sizeof(mqtt_topic_state),
         "sonoff/%x/state", ESP.getChipId()
-    );
-    snprintf(
-        mqtt_topic_device,
-        sizeof(mqtt_topic_device),
-        "sonoff/%x/+", ESP.getChipId()
     );
     snprintf(
         mqtt_topic_command,
