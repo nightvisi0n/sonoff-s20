@@ -1,5 +1,7 @@
 # (yet another) firmware for the [sonoff s20 smart socket](http://sonoff.itead.cc/en/products/residential/s20-socket) #
 
+[![](https://travis-ci.org/nightvisi0n/sonoff-s20.svg?branch=master)](https://travis-ci.org/nightvisi0n/sonoff-s20)
+
 ## Features ##
 
 1.  [platformio](http://platformio.org/) support
